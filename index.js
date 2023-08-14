@@ -13,10 +13,7 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function playRound() {
-    const playerSelection = prompt("Enter your weapon of choice - rock, paper, or scissors!").toLowerCase();
-    const computerSelection = getComputerChoice();
-
+function playRound(playerSelection, computerSelection) {
     if (playerSelection === 'rock' && computerSelection === 'scissors') {
         return 'You win!';
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
@@ -27,3 +24,26 @@ function playRound() {
         return 'You loose!';
     }
 }
+
+function game() {
+    let playerWinCounter = 0;
+    let computerWinCounter = 0;
+
+    for (i = 0; i < 5; i++) {
+        const playerSelection = prompt("Enter your weapon of choice - rock, paper, or scissors!").toLowerCase();
+        const computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+        if (playerSelection === 'rock' && computerSelection === 'scissors') {
+            playerWinCounter++;
+        } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+            playerWinCounter++;
+        } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+            playerWinCounter++;
+        } else {
+            computerWinCounter++;
+        }
+    }
+    console.log(`You won ${playerWinCounter} and computer won ${computerWinCounter}`);
+}
+
+game();
